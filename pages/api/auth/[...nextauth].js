@@ -2,9 +2,14 @@ import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
+import YandexProvider from "next-auth/providers/yandex";
 
 export const authOptions = {
 providers: [
+    YandexProvider({
+        clientId: process.env.YANDEX_CLIENT_ID,
+        clientSecret: process.env.YANDEX_CLIENT_SECRET
+      }),
     GoogleProvider({
         clientId: process.env.GOOGLE_CLIENT_ID,
         clientSecret: process.env.GOOGLE_CLIENT_SECRET
