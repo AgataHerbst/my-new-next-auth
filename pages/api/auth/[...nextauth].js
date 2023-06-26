@@ -1,10 +1,17 @@
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
+
+import { PrismaAdapter } from "@auth/prisma-adapter";
+import { PrismaClient } from "@prisma/client";
+
 import GitHubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import YandexProvider from "next-auth/providers/yandex";
 
+const prisma = new PrismaClient();
+
 export const authOptions = {
+adapter: PrismaAdapter(prisma),
 providers: [
     YandexProvider({
         clientId: process.env.YANDEX_CLIENT_ID,
