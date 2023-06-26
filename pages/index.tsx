@@ -5,7 +5,7 @@ export default function Home() {
 
   if(session) {
     console.log('session=',session);
-    console.log('user=',session.user);
+    console.log('user=',session?.user);
 
     return <>
      Signed in as {session.user?.email} <br/>
